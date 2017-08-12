@@ -74,12 +74,14 @@ function showAllNews(req, res){
 **/ 
 // show create form
 function showCreate(req, res) {
+if(! req.session.userId ) {return res.redirect('/'); }
 	res.render('pages/news/create', {
 		errors: req.flash('errors')
 	});
 }
 // proccessing create
 function proccessCreate(req, res) {
+if(! req.session.userId ) {return res.redirect('/'); }
 
 	// form validate
 	 	req.checkBody('title','Ttile is requerd.').notEmpty();
@@ -131,6 +133,9 @@ function proccessCreate(req, res) {
 
 
 function commentCreate(req, res) {
+if(! req.session.userId ) {return res.redirect('/'); }
+
+
 	const ComentBody = new Comment({
 		body: req.body.body,
 		post_id : req.body.post_id,

@@ -44,6 +44,7 @@ module.exports = {
 	* create
 	*/
 	 function showCreate(req, res){
+	 	if(! req.session.userId ) {return res.redirect('/'); }
 	 	res.render('pages/create', { 
 	 		errors : req.flash('errors')
 	 	});
@@ -51,6 +52,7 @@ module.exports = {
 
 
 	 function processCreate(req, res){
+	 	if(! req.session.userId ) {return res.redirect('/'); }
 	 	// validate informtion
 	 	req.checkBody('name','name is requerd.').notEmpty();
 	 	req.checkBody('description','description is requerd.').notEmpty();
@@ -77,6 +79,7 @@ module.exports = {
 	 }
 
 	 function showEdit(req, res){
+	 	if(! req.session.userId ) {return res.redirect('/'); }
 	 	Event.findOne({ slug : req.params.slug}, (err, event) => {
 	 		res.render('pages/edit', {
 	 			event : event,
@@ -87,6 +90,7 @@ module.exports = {
 	 }
 
 	 function processEdit( req, res) {
+	 	if(! req.session.userId ) {return res.redirect('/'); }
 	 	// validate informtion
 	 	req.checkBody('name','name is requerd.').notEmpty();
 	 	req.checkBody('description','description is requerd.').notEmpty();
@@ -114,6 +118,7 @@ module.exports = {
 		 })
 	}
 	function eventDelete(req, res){
+		if(! req.session.userId ) {return res.redirect('/'); }
 		Event.remove({ slug: req.params.slug}, (err) =>{
 			req.flash('success','Event removed ..!');
 			res.redirect('/events');
