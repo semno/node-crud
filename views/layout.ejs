@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Olymics app</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+	<!-- Header -->
+	<header id="site-header">
+		<div class="navbar navbar-inverse">
+			<div class="container">
+				<div class="navbar-header">
+					<a href="/" class="navbar-brand">My Site</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li><a href="/events/">Events</a></li>
+					<li><a href="/news/">News</a></li>
+					<li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Create <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/events/create">create an events</a></li>
+            <li><a href="/news/create">create a news</a></li>
+            <li><a href="/events/create">create an article</a></li>
+
+          </ul>
+        </li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	<!-- main  -->
+	<main id="site-main">
+		<div class="container">
+			<%- body %>
+		</div>
+	</main>
+	<!-- Footer -->
+	<footer id="site-footer">
+		copyright &copy;  All to web site 2017
+	</footer>
+</body>
+</html>

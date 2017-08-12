@@ -1,0 +1,51 @@
+
+<div class="jumbotron text-center">
+	<h1>All News</h1>
+</div>
+<div class="grid">
+
+		<% for(var news of newsList){ %>
+		      <div class="col col-md-4">
+		      <div class="grid-item">
+		         <div class="img-views">	
+		         	<img src="<%= (news.photo)? '/upload/'+news.photo: '/img/no_pic_image.png' %>" alt="<%= news.title %>" />
+		         	<% if (news.photo){ %>
+		         	<div id="imgtrue"><i class="fa fa-image"></i></div>
+		         	<% } %>
+		         	</div> 
+		        <div class="grid-item-content">
+		          <ul class="meta">
+		            <li><i class="fa fa-user-o"></i> <a href="/profile/<%= news.author.username %>" title=""><%= news.author.name %></a></li>
+		            <!-- July 12, 2015 -->
+		            <li class="pull-right"><i class="fa fa-calendar-o"></i> <%= fecha.format(news.create_date , 'mediumDate') %></li>
+		          </ul>
+		          <h1 class="heading"><%= truncatise(news.title, {TruncateLength: 3}) %></h1>
+		          <div class="flex-spacer"></div>
+		          <ul class="meta meta-bottom">
+		            <li aria-label="Liked"><i class="fa fa-comment-o" aria-hidden="true"></i> 23</li>
+		            <li aria-label="Shared"><i class="fa fa-share-alt" aria-hidden="true"></i> 145</li>
+		            <li class="flex-spacer"></li>
+		            <li><a href="/news/<%= news.slug %>" title="">Read more <i class="icon ion-ios-arrow-forward" aria-hidden="true"></i></a></li>
+		          </ul>
+		        </div>
+		      </div>
+		    </div>
+	<% } %>
+</div>
+
+  <ul class="pagination">
+		<li class="<%= (paginator.previous)? ' ':'disabled'  %>">
+		
+			<a <% if ( paginator.previous){ %> href="?page=<%= paginator.previous %>" <% } %> aria-label="Previous"><span aria-hidden="true">«</span></a>
+		
+		</li> 
+		<% for(var page of paginator.range){ %>
+			<li <%= (page === paginator.current)? 'class=active ':''  %> >
+				<a href="?page=<%= page %>"><%=  page %></a>
+			</li> 
+		<% }  %>
+		<li class="<%= (paginator.next)? ' ':'disabled'  %>" ><a  <% if ( paginator.next){ %> href="?page=<%= paginator.next %>" <% } %>  aria-label="Next"><span aria-hidden="true">»</span></a></li> 
+</ul>
+
+
+

@@ -1,0 +1,39 @@
+<% if (sucess.length){ %>
+	<div class="alert alert-success"><%= sucess %></div>
+<% } %>
+<div class="jumbotron ">
+	<h1 class="text-center"><%= news.title %></h1>
+	<p><%-  news.description  %> </p>
+</div>
+
+
+<div class="comments">
+		<div class="comment-wrap">
+				<div class="comment-block">
+						<form action="/news/comment" method="post">
+						<input type="hidden" name="post_id" value="<%= news._id %>">
+						<input type="hidden" name="redirect" value="<%= news.slug %>">
+
+								<textarea name="body" id="" cols="30" rows="3" placeholder="Add comment..."></textarea>
+								<div class="form-group">
+									<button type="submit" class="btn btn-xs btn-success">Add Comment</button>
+								</div>
+						</form>
+				</div>
+		</div>
+<% for(var comit of comments){ %>
+		<div class="comment-wrap">
+				<div class="comment-block">
+						<p class="comment-text"><%= comit.body  %></p>
+						<div class="bottom-comment">
+								<div class="comment-date"> <%= fecha.format(news.create_date , 'D MMM, YYYY  [@] hh:mm A') %> </div>
+								<ul class="comment-actions">
+										<li class="complain">Complain</li>
+										<li class="reply">Reply</li>
+								</ul>
+						</div>
+				</div>
+		</div>
+<% }   %>
+		
+</div> 

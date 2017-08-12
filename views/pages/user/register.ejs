@@ -1,0 +1,64 @@
+<div class="jumbotron text-center">
+	<h1>Create New account</h1>
+</div>
+
+<div class="">
+	<div class="col-sm-5 jumbotron ">
+		<% if(errorsLogin.length) { %>
+		<div class="alert  alert-danger">
+			<% for (error of errorsLogin) { %>
+				<%= error %><br />
+			<% } %>
+		</div>
+		<% } %>
+		<form action="/login" method="post">
+			<div class="form-group">
+				<label for="">Email</label>
+				<input type="text" name="email" class="form-control" />
+			</div>
+				<div class="form-group">
+					<label for="">Password</label>
+					<input type="password" name="password" class="form-control" />
+				</div>
+				<div class="form-group">
+				<input type="checkbox" name="rememberMe" class="pull-left" id="rM"> <label for="rM" class="">remember me</label>
+				</div>
+				
+				<div class="form-group">
+					<button type="submit" class="btn btn-success btn-lg">Login</button>
+				</div>
+			</form>
+		</div>
+		<div class="col-sm-6 jumbotron col-sm-offset-1">
+		<% if(errorsRegister.length) { %>
+		<div class="alert  alert-danger">
+			<% for (error of errorsRegister) { %>
+				<%= error %><br />
+			<% } %>
+		</div>
+		<% } %>
+
+		<form action="/register" method="post">
+			<div class="form-group">
+				<label for="">Name</label>
+				<input type="text" name="name" class="form-control" />
+			</div>
+			<div class="form-group">
+				<label for="">Email</label>
+				<input type="text" name="email" class="form-control" />
+			</div>
+			<div class="form-group">
+				<label for="">Username</label>
+				<input type="text" name="username" class="form-control" />
+			</div>
+			<div class="form-group">
+				<label for="">Password</label>
+				<input type="password" name="password" class="form-control" />
+			</div>
+			
+			<div class="form-group">
+				<button type="submit" class="btn btn-success btn-lg">Create</button>
+			</div>
+		</form>
+	</div>
+</div>
